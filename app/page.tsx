@@ -1,4 +1,5 @@
 'use client'
+import Head from "next/head";
 import Image from "next/image";
 import Lanyard from "./component/Lanyard";
 import RotatingText from "./component/RotatingText";
@@ -6,7 +7,6 @@ import BlurText from "./component/BlurText";
 import RippleGrid from "./component/RippleGrid";
 import Dock from "./component/Dock";
 import { VscHome, VscArchive, VscAccount, VscSettingsGear } from "react-icons/vsc";
-import ClickSpark from "./component/ClickSpark";
 import { Timeline } from "./component/Timelines/Timelines";
 import InfiniteMenu from "./component/InfiniteMenu";
 import GlitchText from "./component/GlitchText";
@@ -22,7 +22,7 @@ const techLogos = [
   { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
 ];
 
-const data = [
+const timelineData = [
   {
     title: "2025",
     content: (
@@ -31,10 +31,10 @@ const data = [
           Built and Launched Dynamic Project 
         </p>
         <div className="grid grid-cols-2 gap-4">
-          <img src="/assets/img/project4.png" alt="startup template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
-          <img src="/assets/img/project1.png" alt="startup template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
-          <img src="/assets/img/project5.png" alt="startup template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
-          <img src="/assets/img/project3.png" alt="startup template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
+          <img src="/assets/img/project4.png" alt="Project 4 - startup template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
+          <img src="/assets/img/project1.png" alt="Project 1 - startup template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
+          <img src="/assets/img/project5.png" alt="Project 5 - startup template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
+          <img src="/assets/img/project3.png" alt="Project 3 - startup template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
         </div>
       </div>
     ),
@@ -50,115 +50,166 @@ const data = [
           Lorem ipsum is for people who are too lazy to write copy. But we are not. Here are some more example of beautiful designs I built.
         </p>
         <div className="grid grid-cols-2 gap-4">
-          <img src="/assets/img/project6.png" alt="hero template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
-          <img src="/assets/img/tokoku.png" alt="feature template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
-          <img src="https://assets.aceternity.com/pro/bento-grids.png" alt="bento template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
-          <img src="/assets/img/project2.png" alt="cards template" width={500} height={500} className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
+          <img src="/assets/img/project6.png" alt="Project 6 - hero template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
+          <img src="/assets/img/tokoku.png" alt="Tokoku - feature template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
+          <img src="https://assets.aceternity.com/pro/bento-grids.png" alt="Bento grids template example" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
+          <img src="/assets/img/project2.png" alt="Project 2 - cards template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
         </div>
       </div>
     ),
   },
 ];
 
-const items = [
-  { image: 'https://picsum.photos/300/300?grayscale', link: 'https://google.com/', title: '', description: 'This is pretty cool, right?' },
-  { image: 'https://picsum.photos/400/400?grayscale', link: 'https://google.com/', title: '', description: 'This is pretty cool, right?' },
-  { image: 'https://picsum.photos/500/500?grayscale', link: 'https://google.com/', title: '', description: 'This is pretty cool, right?' },
-  { image: 'https://picsum.photos/600/600?grayscale', link: 'https://google.com/', title: '', description: 'This is pretty cool, right?' },
+const infiniteMenuItems = [
+  { image: 'https://picsum.photos/300/300?grayscale', link: 'https://google.com/', title: 'Example 1', description: 'This is pretty cool, right?' },
+  { image: 'https://picsum.photos/400/400?grayscale', link: 'https://google.com/', title: 'Example 2', description: 'This is pretty cool, right?' },
+  { image: 'https://picsum.photos/500/500?grayscale', link: 'https://google.com/', title: 'Example 3', description: 'This is pretty cool, right?' },
+  { image: 'https://picsum.photos/600/600?grayscale', link: 'https://google.com/', title: 'Example 4', description: 'This is pretty cool, right?' },
 ];
 
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#19222D] relative">
 
-      {/* Hero section dengan background RippleGrid hanya di atas */}
-      <div className="relative w-full h-[calc(100vh-100px)]">
-        <div className="absolute inset-0 top-0 h-[60%]">
-          <RippleGrid
-            enableRainbow={true}
-            gridColor="#ffffff"
-            rippleIntensity={0.05}
-            gridSize={10}
-            gridThickness={15}
-            mouseInteraction={false}
-            mouseInteractionRadius={0.8}
-            opacity={0.8}
-          />
-        </div>
+      {/* SEO */}
+      <Head>
+        <title>Lutfi Amwan Doli Siregar - Web Developer | FullStack & FrontEnd</title>
+        <meta name="description" content="Portofolio Lutfi Amwan Doli Siregar, Web Developer FullStack dan FrontEnd. Lihat proyek, skill, dan pengalaman saya dalam membangun aplikasi modern dan interaktif." />
+        <meta name="keywords" content="Web Developer, FullStack Developer, FrontEnd, Next.js, React, Tailwind CSS, TypeScript, Portfolio, Lutfi Amwan Doli Siregar" />
+        <meta name="author" content="Lutfi Amwan Doli Siregar" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <div className="relative z-10 container mx-auto h-full px-4">
-          <div className="grid grid-cols-12 text-white h-full">
-            <div className="col-span-12 md:col-span-6 flex flex-col justify-center">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-2xl text-white font-bold ">I'm Ready For Job</h1>
-                <RotatingText
-                  texts={['Web Development', 'FullStack', 'Backend', 'FrontEnd']}
-                  mainClassName="px-2 sm:px-2 md:px-3 bg-[#2C07FD] text-black overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-2xl font-bold inline-flex transition-all"
-                  staggerFrom={"last"}
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  exit={{ y: "-120%" }}
-                  staggerDuration={0.025}
-                  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                  rotationInterval={2000}
-                />
-              </div>
+        {/* Open Graph */}
+        <meta property="og:title" content="Lutfi Amwan Doli Siregar - Web Developer | FullStack & FrontEnd" />
+        <meta property="og:description" content="Portofolio Lutfi Amwan Doli Siregar. Lihat proyek, skill, dan pengalaman saya dalam membangun aplikasi modern dan interaktif." />
+        <meta property="og:image" content="/assets/img/project1.png" />
+        <meta property="og:url" content="https://lutfi-portfolio.com" />
+        <meta property="og:type" content="website" />
 
-              <BlurText
-                text="Lutfi Amwan Doli Siregar"
-                delay={50}
-                animateBy="words"
-                direction="top"
-                className="text-4xl sm:text-5xl md:text-6xl mb-8"
-              />
-              <p className="text-md sm:text-lg text-gray-300 max-w-xl mb-6">
-                A passionate Web Developer focused on creating modern, high-performance,
-                and user-friendly digital experiences. Experienced in building fullstack
-                applications, interactive interfaces, and scalable systems.
-              </p>
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Lutfi Amwan Doli Siregar - Web Developer | FullStack & FrontEnd" />
+        <meta name="twitter:description" content="Portofolio Lutfi Amwan Doli Siregar. Lihat proyek, skill, dan pengalaman saya dalam membangun aplikasi modern dan interaktif." />
+        <meta name="twitter:image" content="/assets/img/project1.png" />
 
-              <div className="flex gap-4">
-                <a href="https://github.com/lutfiamwandoli" target="_blank" className="inline-block p-2 rounded-lg hover:bg-white/10 transition">
-                  <FaSquareGithub className="text-4xl" />
-                </a>
-                <a href="https://linkedin.com/in/lutfi-amwan-doli-siregar-496359379" target="_blank" className="inline-block p-2 rounded-lg hover:bg-white/10 transition">
-                  <CiLinkedin className="text-4xl" />
-                </a>
-              </div>
-            </div>
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" />
 
-            <div className="col-span-12 md:col-span-6 flex justify-center items-center mt-10 md:mt-0">
-              <Lanyard position={[0, 0, 13]} gravity={[0, -40, 0]} />
-            </div>
-          </div>
+        {/* JSON-LD */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Lutfi Amwan Doli Siregar",
+          "url": "https://lutfi-portfolio.com",
+          "sameAs": [
+            "https://github.com/lutfiamwandoli",
+            "https://linkedin.com/in/lutfi-amwan-doli-siregar-496359379"
+          ],
+          "jobTitle": "Web Developer",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Self-employed"
+          }
+        }) }} />
+      </Head>
 
-          <div style={{ height: '200px', position: 'relative', overflow: 'hidden', marginTop: '2rem'}}>
-            <LogoLoop
-              logos={techLogos}
-              speed={120}
-              direction="left"
-              logoHeight={48}
-              gap={40}
-              hoverSpeed={0}
-              scaleOnHover
-              fadeOut
-              fadeOutColor="#ffffff"
-              ariaLabel="Technology partners"
+      <header>
+        {/* Hero Section */}
+        <div className="relative w-full h-[calc(100vh-100px)]">
+          <div className="absolute inset-0 top-0 h-[60%]">
+            <RippleGrid
+              enableRainbow={true}
+              gridColor="#ffffff"
+              rippleIntensity={0.05}
+              gridSize={10}
+              gridThickness={15}
+              mouseInteraction={false}
+              mouseInteractionRadius={0.8}
+              opacity={0.8}
             />
           </div>
+
+          <div className="relative z-10 container mx-auto h-full px-4">
+            <div className="grid grid-cols-12 text-white h-full">
+              <div className="col-span-12 md:col-span-6 flex flex-col justify-center">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h1 className="text-2xl text-white font-bold">I'm Ready For Job</h1>
+                  <RotatingText
+                    texts={['Web Development', 'FullStack', 'Backend', 'FrontEnd']}
+                    mainClassName="px-2 sm:px-2 md:px-3 bg-[#2C07FD] text-black overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-2xl font-bold inline-flex transition-all"
+                    staggerFrom={"last"}
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    exit={{ y: "-120%" }}
+                    staggerDuration={0.025}
+                    splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                    transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                    rotationInterval={2000}
+                  />
+                </div>
+
+                <BlurText
+                  text="Lutfi Amwan Doli Siregar"
+                  delay={50}
+                  animateBy="words"
+                  direction="top"
+                  className="text-4xl sm:text-5xl md:text-6xl mb-8"
+                />
+                <p className="text-md sm:text-lg text-gray-300 max-w-xl mb-6">
+                  A passionate Web Developer focused on creating modern, high-performance,
+                  and user-friendly digital experiences. Experienced in building fullstack
+                  applications, interactive interfaces, and scalable systems.
+                </p>
+
+                <div className="flex gap-4">
+                  <a href="https://github.com/lutfiamwandoli" target="_blank" className="inline-block p-2 rounded-lg hover:bg-white/10 transition">
+                    <FaSquareGithub className="text-4xl" />
+                  </a>
+                  <a href="https://linkedin.com/in/lutfi-amwan-doli-siregar-496359379" target="_blank" className="inline-block p-2 rounded-lg hover:bg-white/10 transition">
+                    <CiLinkedin className="text-4xl" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Lanyard responsive */}
+              <div className="col-span-12 md:col-span-6 flex justify-center items-center mt-10 md:mt-0">
+                <div className="w-full max-w-full h-[250px] md:h-auto md:max-h-none relative">
+                  <Lanyard position={[0, 0, 13]} gravity={[0, -40, 0]} />
+                </div>
+              </div>
+            </div>
+
+            <div style={{ height: '200px', position: 'relative', overflow: 'hidden', marginTop: '2rem'}}>
+              <LogoLoop
+                logos={techLogos}
+                speed={120}
+                direction="left"
+                logoHeight={48}
+                gap={40}
+                hoverSpeed={0}
+                scaleOnHover
+                fadeOut
+                fadeOutColor="#ffffff"
+                ariaLabel="Technology partners"
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* Timeline */}
-      <Timeline data={data}/>
+      <main>
+        {/* Timeline */}
+        <section id="timeline" className="mt-20">
+          <Timeline data={timelineData}/>
+        </section>
 
-      {/* Infinite menu */}
-      <div style={{ height: '600px', position: 'relative' }}>
-        <InfiniteMenu items={items}/>
-      </div>
+        {/* Infinite Menu */}
+        <section id="projects" className="mt-20" style={{ height: '600px', position: 'relative' }}>
+          <InfiniteMenu items={infiniteMenuItems}/>
+        </section>
+      </main>
 
-      {/* Footer */}
       <footer className="relative z-10 w-full py-8 bg-[#0f1520] text-white mt-20 border-t border-white/10">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-sm opacity-80">
@@ -175,7 +226,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-
     </div>
   );
 }
