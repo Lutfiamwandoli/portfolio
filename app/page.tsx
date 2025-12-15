@@ -52,7 +52,7 @@ const timelineData = [
         <div className="grid grid-cols-2 gap-4">
           <img src="/assets/img/project6.png" alt="Project 6 - hero template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
           <img src="/assets/img/tokoku.png" alt="Tokoku - feature template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
-          <img src="https://assets.aceternity.com/pro/bento-grids.png" alt="Bento grids template example" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
+          <img src="/assets/img/puskopa.png" alt="Bento grids template example" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
           <img src="/assets/img/project2.png" alt="Project 2 - cards template by Lutfi" className="h-20 w-full rounded-lg object-cover md:h-44 lg:h-60"/>
         </div>
       </div>
@@ -61,10 +61,10 @@ const timelineData = [
 ];
 
 const infiniteMenuItems = [
-  { image: 'https://picsum.photos/300/300?grayscale', link: 'https://google.com/', title: 'Example 1', description: 'This is pretty cool, right?' },
-  { image: 'https://picsum.photos/400/400?grayscale', link: 'https://google.com/', title: 'Example 2', description: 'This is pretty cool, right?' },
-  { image: 'https://picsum.photos/500/500?grayscale', link: 'https://google.com/', title: 'Example 3', description: 'This is pretty cool, right?' },
-  { image: 'https://picsum.photos/600/600?grayscale', link: 'https://google.com/', title: 'Example 4', description: 'This is pretty cool, right?' },
+  { image: '/assets/img/puskopa.png', link: 'https://google.com/', title: '', description: 'This is pretty cool, right?' },
+  { image: 'https://picsum.photos/400/400?grayscale', link: 'https://google.com/', title: '', description: 'This is pretty cool, right?' },
+  { image: 'https://picsum.photos/500/500?grayscale', link: 'https://google.com/', title: '', description: 'This is pretty cool, right?' },
+  { image: 'https://picsum.photos/600/600?grayscale', link: 'https://google.com/', title: '', description: 'This is pretty cool, right?' },
 ];
 
 export default function Home() {
