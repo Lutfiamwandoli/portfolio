@@ -5,8 +5,7 @@ import Lanyard from "./component/Lanyard";
 import RotatingText from "./component/RotatingText";
 import BlurText from "./component/BlurText";
 import RippleGrid from "./component/RippleGrid";
-import Dock from "./component/Dock";
-import { VscHome, VscArchive, VscAccount, VscSettingsGear } from "react-icons/vsc";
+import BubbleMenu from './component/BubbleMenu';
 import { Timeline } from "./component/Timelines/Timelines";
 import InfiniteMenu from "./component/InfiniteMenu";
 import GlitchText from "./component/GlitchText";
@@ -67,6 +66,30 @@ const infiniteMenuItems = [
   { image: 'https://picsum.photos/600/600?grayscale', link: 'https://google.com/', title: '', description: 'This is pretty cool, right?' },
 ];
 
+const menuItems = [
+  {
+    label: 'home',
+    href: '#home',
+    ariaLabel: 'Home',
+    rotation: -8,
+    hoverStyles: { bgColor: '#3b82f6', textColor: '#ffffff' }
+  },
+  {
+    label: 'timeline',
+    href: '#timeline',
+    ariaLabel: 'Timeline',
+    rotation: 8,
+    hoverStyles: { bgColor: '#10b981', textColor: '#ffffff' }
+  },
+  {
+    label: 'projects',
+    href: '#projects',
+    ariaLabel: 'Projects',
+    rotation: 8,
+    hoverStyles: { bgColor: '#f59e0b', textColor: '#ffffff' }
+  }
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#19222D] relative">
@@ -114,9 +137,24 @@ export default function Home() {
         }) }} />
       </Head>
 
+      {/* BubbleMenu Navigation */}
+      <div className="fixed top-6 left-6 z-50">
+        <BubbleMenu
+          logo={<span style={{ fontWeight: 700, fontSize: '1.2rem' }}>LS</span>}
+          items={menuItems}
+          menuAriaLabel="Toggle navigation"
+          menuBg="#ffffff"
+          menuContentColor="#111111"
+          useFixedPosition={false}
+          animationEase="back.out(1.5)"
+          animationDuration={0.5}
+          staggerDelay={0.12}
+        />
+      </div>
+
       <header>
         {/* Hero Section */}
-        <div className="relative w-full h-[calc(100vh-100px)]">
+        <div className="relative w-full h-[calc(100vh-100px)]" id="home">
           <div className="absolute inset-0 top-0 h-[60%]">
             <RippleGrid
               enableRainbow={true}
@@ -200,17 +238,17 @@ export default function Home() {
 
       <main>
         {/* Timeline */}
-        <section id="timeline" className="mt-20">
+        <section id="timeline" className="mt-20 pt-16">
           <Timeline data={timelineData}/>
         </section>
 
         {/* Infinite Menu */}
-        <section id="projects" className="mt-20" style={{ height: '600px', position: 'relative' }}>
+        <section id="projects" className="mt-20 pt-16" style={{ height: '600px', position: 'relative' }}>
           <InfiniteMenu items={infiniteMenuItems}/>
         </section>
       </main>
 
-      <footer className="relative z-10 w-full py-8 bg-[#0f1520] text-white mt-20 border-t border-white/10">
+      <footer id="contact" className="relative z-10 w-full py-8 bg-[#0f1520] text-white mt-20 border-t border-white/10">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-sm opacity-80">
             © {new Date().getFullYear()} Lutfi Amwan Doli Siregar
